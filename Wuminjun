@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界地理交互式教学网页</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft Yahei",sans-serif;}
+        :root{--main:#2c6e91;--light:#e8f4f9;--dark:#222;--card:#fff;}
+        body{background:#f4f8fa;color:var(--dark);padding:20px;}
+        .container{max-width:1200px;margin:0 auto;}
+        header{background:var(--main);color:white;padding:24px;border-radius:12px;margin-bottom:20px;}
+        header h1{margin-bottom:8px;}
+        .nav{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap;}
+        .nav button{padding:10px 16px;border:none;border-radius:8px;background:var(--main);color:white;cursor:pointer;font-size:1rem;}
+        .nav button:hover{background:#1f5470;}
+        .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 2px 10px #00000015;margin-bottom:20px;}
+        .hidden{display:none;}
+        .question{margin:14px 0;padding:12px;border-left:4px solid var(--main);}
+        .answer{margin-top:8px;color:#333;display:none;}
+        .show-ans{color:#2c6e91;cursor:pointer;font-weight:bold;}
+        .tip{background:#fff8dc;padding:12px;border-radius:8px;margin:10px 0;}
+        footer{margin-top:30px;text-align:center;color:#666;font-size:0.9rem;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>世界地理 · 交互式教学平台</h1>
+        <p>章节知识点展示 · 课堂互动 · 随堂练习</p>
+    </header>
+
+    <div class="nav">
+        <button onclick="switchPage('knowledge')">知识点学习</button>
+        <button onclick="switchPage('quiz')">随堂练习</button>
+        <button onclick="switchPage('extend')">🔧扩展升级预览</button>
+    </div>
+
+    <!-- 知识点板块 -->
+    <div id="knowledge" class="page">
+        <div class="card">
+            <h2>世界地理核心章节</h2>
+            <div class="tip">大洲大洋、板块运动、世界气候、洋流、人文地理、区域发展</div>
+            <h3>1.大洲与大洋</h3>
+            <p>地球表面七分海洋三分陆地；七大洲四大洋；大洲分界线。</p>
+            <h3>2.板块构造学说</h3>
+            <p>六大板块，板块交界处地壳活跃，多火山地震。</p>
+            <h3>3.世界气候类型</h3>
+            <p>热带、亚热带、温带、寒带气候；影响因素：纬度、海陆、地形。</p>
+            <h3>4.世界人文地理</h3>
+            <p>人口、人种、语言、宗教、聚落、经济发展差异。</p>
+        </div>
+    </div>
+
+    <!-- 习题板块 -->
+    <div id="quiz" class="page hidden">
+        <div class="card">
+            <h2>随堂检测</h2>
+            <div class="question">
+                <p>1.地球上海洋面积占比大约为？</p>
+                <div class="show-ans" onclick="this.nextElementSibling.style.display='block'">点击查看答案</div>
+                <div class="answer">71%，陆地约29%。</div>
+            </div>
+            <div class="question">
+                <p>2.世界上面积最大的大洲？</p>
+                <div class="show-ans" onclick="this.nextElementSibling.style.display='block'">点击查看答案</div>
+                <div class="answer">亚洲。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅新增：4点扩展升级建议页面 -->
+    <div id="extend" class="page hidden">
+        <div class="card">
+            <h2>项目扩展升级建议（4项）</h2>
+            <ol style="padding-left:22px;line-height:1.8;">
+                <li><strong>交互式矢量世界地图模块升级</strong>
+                    <p>增加可点击矢量世界地图，点击大洲/国家弹出对应地理知识点卡片（地形、气候、人文、重难点）；增加缩放、拖拽功能；配套高亮图层（气候带、洋流、板块边界），教师一键切换图层，课堂直观演示区域地理特征。</p>
+                </li>
+                <li><strong>随堂测评与学情统计功能</strong>
+                    <p>拓展题型：单选、多选、填空、识图题；提交后即时判分+解析；本地存储答题数据，自动生成学情统计，统计正确率、高频错题，教师可导出错题清单，针对性辅导。</p>
+                </li>
+                <li><strong>知识点分层与学习路径功能</strong>
+                    <p>知识点分层：基础识记、重难点、拓展探究；区分教师授课模式/学生自学模式。设置学习任务清单，标记已掌握/未掌握知识点，支持收藏重点，生成个人笔记。</p>
+                </li>
+                <li><strong>多终端适配与资源库扩展</strong>
+                    <p>适配电脑、平板，支持教室投屏；新增内嵌资源库，可嵌入地理短视频、卫星遥感图、地形剖面图；增加浅色/暗黑双主题，适配投影环境。</p>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <footer>世界地理交互式教学网页 | 本地网页，可部署至网络生成在线网址</footer>
+</div>
+
+<script>
+function switchPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden'));
+    document.getElementById(id).classList.remove('hidden');
+}
+</script>
+</body>
+</html>
